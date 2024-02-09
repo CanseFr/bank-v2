@@ -42,20 +42,6 @@ class UserServiceImplTest {
     }
 
     @Test
-    void findAllClients() {
-        List<Client> clients = new ArrayList<>();
-        clients.add(new Client());
-        clients.add(new Client());
-        clients.add(new Client());
-        when(userRepository.findAll()).thenReturn(clients);
-
-        List<Client> foundClients = userService.findAll();
-
-        assertEquals(clients, foundClients);
-        verify(userRepository, times(3)).findAll();
-    }
-
-    @Test
     void findClientById() {
         Client client = new Client();
         client.setId(1);

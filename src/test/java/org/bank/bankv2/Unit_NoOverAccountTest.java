@@ -1,8 +1,8 @@
 package org.bank.bankv2;
 
-import org.bank.bankv2.controllers.OverAccountController;
-import org.bank.bankv2.models.OverAccount;
-import org.bank.bankv2.services.OverAccountService;
+import org.bank.bankv2.controllers.NoOverAccountController;
+import org.bank.bankv2.models.NoOverAccount;
+import org.bank.bankv2.services.NoOverAccountService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -17,12 +17,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-public class OverAccountTest {
+public class Unit_NoOverAccountTest {
     @Mock
-    private OverAccountService overAccountService;
+    private NoOverAccountService noOverAccountService;
 
     @InjectMocks
-    private OverAccountController overAccountController;
+    private NoOverAccountController noOverAccountController;
 
     @BeforeEach
     void setUp() {
@@ -31,10 +31,10 @@ public class OverAccountTest {
 
     @Test
     public void testFindAll() {
-        List<OverAccount> expectedAccounts = Arrays.asList(new OverAccount(), new OverAccount());
-        when(overAccountService.findAll()).thenReturn(expectedAccounts);
+        List<NoOverAccount> expectedAccounts = Arrays.asList(new NoOverAccount(), new NoOverAccount());
+        when(noOverAccountService.findAll()).thenReturn(expectedAccounts);
 
-        ResponseEntity<List<OverAccount>> response = overAccountController.findAll();
+        ResponseEntity<List<NoOverAccount>> response = noOverAccountController.findAll();
 
         assertEquals(expectedAccounts, response.getBody());
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -43,10 +43,10 @@ public class OverAccountTest {
     @Test
     public void testFindById() {
         Integer accountId = 1;
-        OverAccount expectedAccount = new OverAccount();
-        when(overAccountService.findById(accountId)).thenReturn(expectedAccount);
+        NoOverAccount expectedAccount = new NoOverAccount();
+        when(noOverAccountService.findById(accountId)).thenReturn(expectedAccount);
 
-        ResponseEntity<OverAccount> response = overAccountController.findById(accountId);
+        ResponseEntity<NoOverAccount> response = noOverAccountController.findById(accountId);
 
         assertEquals(expectedAccount, response.getBody());
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -54,11 +54,11 @@ public class OverAccountTest {
 
     @Test
     public void testSave() {
-        OverAccount accountToSave = new OverAccount();
+        NoOverAccount accountToSave = new NoOverAccount();
         Integer savedAccountId = 1;
-        when(overAccountService.save(accountToSave)).thenReturn(savedAccountId);
+        when(noOverAccountService.save(accountToSave)).thenReturn(savedAccountId);
 
-        ResponseEntity<Integer> response = overAccountController.save(accountToSave);
+        ResponseEntity<Integer> response = noOverAccountController.save(accountToSave);
 
         assertEquals(savedAccountId, response.getBody());
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -68,23 +68,22 @@ public class OverAccountTest {
     public void testDelete() {
         Integer accountId = 1;
 
-        ResponseEntity<Void> response = overAccountController.delete(accountId);
+        ResponseEntity<Void> response = noOverAccountController.delete(accountId);
 
         assertEquals(HttpStatus.ACCEPTED, response.getStatusCode());
-        verify(overAccountService, times(1)).delete(accountId);
+        verify(noOverAccountService, times(1)).delete(accountId);
     }
-
     @Test
     public void testDebitByUserId() {
         Integer amount = 500;
         Integer userId = 1;
         String expectedResponse = "OK";
-        when(overAccountService.debitByUserId(amount, userId)).thenReturn(expectedResponse);
+        when(noOverAccountService.debitByUserId(amount, userId)).thenReturn(expectedResponse);
 
-        ResponseEntity<String> response = overAccountController.debitByUserId(amount, userId);
+        ResponseEntity<String> response = noOverAccountController.debitByUserId(amount, userId);
 
         assertEquals(expectedResponse, response.getBody());
-        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(200, response.getStatusCodeValue());
     }
 
     @Test
@@ -92,11 +91,11 @@ public class OverAccountTest {
         Integer amount = 500;
         Integer userId = 1;
         String expectedResponse = "OK";
-        when(overAccountService.creditByUserId(amount, userId)).thenReturn(expectedResponse);
+        when(noOverAccountService.creditByUserId(amount, userId)).thenReturn(expectedResponse);
 
-        ResponseEntity<String> response = overAccountController.creditByUserId(amount, userId);
+        ResponseEntity<String> response = noOverAccountController.creditByUserId(amount, userId);
 
         assertEquals(expectedResponse, response.getBody());
-        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(200, response.getStatusCodeValue());
     }
 }
