@@ -49,6 +49,8 @@ The goal is to create a banking service consisting of some very simple banking p
 
 The banking service will then have to communicate with a micro authentication service.
 
+You can find this micro service application on this repository : (Link: [Github](https://github.com/ThomasStibling/micro-service-authentification-js))
+
 <!-- FEATURES -->
 
 ## Features
