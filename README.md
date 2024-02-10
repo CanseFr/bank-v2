@@ -87,10 +87,8 @@ You can find this micro service application on this repository : (Link: [Github]
    ```sh
    git clone https://github.com/CanseFr/bank-v2.git
    ```
-2.Run BankV2Application
 
-
-4. Ajust application.yaml with your database env
+2. Ajust application.yaml with your database env
 ```yaml
 spring:
 datasource:
@@ -110,6 +108,7 @@ ddl-auto: update
 springdoc:
 default-produces-media-type: application/json
 ```
+3.Run the main.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
