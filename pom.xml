@@ -14,7 +14,7 @@
     <name>bank-v2</name>
     <description>bank-v2</description>
     <properties>
-        <java.version>21</java.version>
+        <java.version>17</java.version>
     </properties>
     <dependencies>
         <dependency>
