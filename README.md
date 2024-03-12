@@ -4,7 +4,7 @@
     <img src="assets/mns.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Bank Micro Service</h3>
+<h3 align="center">Bank Micro Service Auth Section</h3>
 
   <p align="center">
     <a href="https://github.com/CanseFr">Request Feature</a>
