@@ -85,8 +85,27 @@ The banking service will then have to communicate with a micro authentication se
    ```sh
    git clone https://github.com/CanseFr/bank-v2.git
    ```
-2.Run BankV2Application
 
+   ```sh
+   git clone du micro service
+   ```
+
+   ```Postman test login
+   Post : http://localhost:8080/login/   
+   Json Raw: 
+   {
+    "email": "test@test.fr",
+    "password": "testtesttest"
+   }
+   ```
+   
+   
+
+   
+
+2.Run BankV2Application or lunch tests
+
+**To have a database as part of launching the tests, please run the main to generate the database using the yaml file !**
 
 4. Ajust application.yaml with your database env
 ```yaml
@@ -108,6 +127,8 @@ ddl-auto: update
 springdoc:
 default-produces-media-type: application/json
 ```
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
