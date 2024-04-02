@@ -1,24 +1,23 @@
 package org.bank.bankv2.web_service.services.Impl;
 
-import org.bank.bankv2.web_service.authentication.UserAuth;
+import org.bank.bankv2.web_service.models.authentication.UserAuth;
 import org.bank.bankv2.web_service.services.AuthenticationService;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
+import java.util.Arrays;
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
 
 
     @Override
-    public boolean authenticate(UserAuth userAuth) throws IOException {
+    public String authenticate(UserAuth userAuth) throws IOException {
 
-        String url = "http://localhost:3000/generate-token";
-        String postData = "{\"username\":\"" + userAuth.getUsername() + "\",\"password\":\"" + userAuth.getPassword() + "\"}";
+        String url = "http://localhost:3000/auth/login";
+        String postData = "{\"email\":\"" + userAuth.getEmail() + "\",\"password\":\"" + userAuth.getPassword() + "\"}";
         URL requestUrl = new URL(url);
         HttpURLConnection conn = (HttpURLConnection) requestUrl.openConnection();
 
@@ -31,20 +30,25 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             wr.flush();
         }
 
+
         int responseCode = conn.getResponseCode();
-        if (responseCode == HttpURLConnection.HTTP_OK) {
+        if (responseCode == HttpURLConnection.HTTP_CREATED) {
             try (BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
                 StringBuilder response = new StringBuilder();
                 String responseLine;
                 while ((responseLine = br.readLine()) != null) {
                     response.append(responseLine.trim());
                 }
-                System.out.println("Réponse : " + response.toString());
-                return true;
+                System.out.println("Response : " + response.toString());
+                return response.toString();
+            } catch (Exception err) {
+                System.out.println(err.getMessage());
+                System.out.println(Arrays.toString(err.getStackTrace()));
+                return "error";
             }
         } else {
             System.out.println("La requête a échoué avec le code : " + responseCode);
-            return false;
+            return "error";
         }
     }
 }

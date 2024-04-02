@@ -90,20 +90,17 @@ The banking service will then have to communicate with a micro authentication se
    git clone du micro service
    ```
 
-   ```Postman test login
-   Post : http://localhost:8080/login/   
-   Json Raw: 
-   {
-    "email": "test@test.fr",
-    "password": "testtesttest"
-   }
-   ```
-   
-   
-
-   
-
 2.Run BankV2Application or lunch tests
+
+Get response header with token, try to Post this url
+```Postman test login
+Post : http://localhost:8080/login/   
+Json Raw: 
+{
+ "email": "test@test.fr",
+ "password": "testtesttest"
+}
+```
 
 **To have a database as part of launching the tests, please run the main to generate the database using the yaml file !**
 

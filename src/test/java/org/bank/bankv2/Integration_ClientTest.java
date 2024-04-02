@@ -28,7 +28,7 @@ public class Integration_ClientTest {
 
     @Test
     public void testSaveClient() throws Exception {
-        String requestBody = "{\"username\":\"testuser\",\"adress\":\"testadress\"}";
+        String requestBody = "{\"email\":\"testuser\",\"adress\":\"testadress\"}";
         mockMvc.perform(MockMvcRequestBuilders.post("/client/")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestBody))
