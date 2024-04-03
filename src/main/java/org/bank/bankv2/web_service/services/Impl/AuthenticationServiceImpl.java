@@ -2,6 +2,8 @@ package org.bank.bankv2.web_service.services.Impl;
 
 import org.bank.bankv2.web_service.models.authentication.UserAuth;
 import org.bank.bankv2.web_service.services.AuthenticationService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -12,9 +14,8 @@ import java.util.Arrays;
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
 
-
     @Override
-    public String authenticate(UserAuth userAuth) throws IOException {
+    public ResponseEntity authenticate(UserAuth userAuth) throws IOException {
 
         String url = "http://localhost:3000/auth/login";
         String postData = "{\"email\":\"" + userAuth.getEmail() + "\",\"password\":\"" + userAuth.getPassword() + "\"}";
@@ -30,7 +31,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             wr.flush();
         }
 
-
         int responseCode = conn.getResponseCode();
         if (responseCode == HttpURLConnection.HTTP_CREATED) {
             try (BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
@@ -39,16 +39,12 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 while ((responseLine = br.readLine()) != null) {
                     response.append(responseLine.trim());
                 }
-                System.out.println("Response : " + response.toString());
-                return response.toString();
+                return ResponseEntity.status(HttpStatus.OK).body(response);
             } catch (Exception err) {
-                System.out.println(err.getMessage());
-                System.out.println(Arrays.toString(err.getStackTrace()));
-                return "error";
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
             }
         } else {
-            System.out.println("La requête a échoué avec le code : " + responseCode);
-            return "error";
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
 }
