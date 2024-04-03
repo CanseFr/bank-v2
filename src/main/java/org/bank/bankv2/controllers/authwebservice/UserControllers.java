@@ -21,10 +21,14 @@ public class UserControllers{
     private final UserServiceImple userService;
 
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody User user) throws IOException {
+    public ResponseEntity create(@RequestBody User user) throws IOException {
         return userService.create(user);
     }
 
+    @PatchMapping("/{user-id}")
+    public ResponseEntity patch(@RequestBody User user, @PathVariable("user-id") int userId) throws IOException {
+        return userService.patch(user, userId);
+    }
 
     @DeleteMapping("/{user-id}")
     public ResponseEntity delete(@PathVariable("user-id") int userId) throws IOException {
@@ -34,6 +38,11 @@ public class UserControllers{
     @GetMapping("/{user-id}")
     public ResponseEntity getById(@PathVariable("user-id") int userId) throws IOException {
         return userService.getById(userId);
+    }
+
+    @GetMapping()
+    public ResponseEntity findAll() throws IOException {
+        return userService.findAll();
     }
 
 }

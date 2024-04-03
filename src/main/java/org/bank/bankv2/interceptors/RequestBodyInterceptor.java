@@ -19,7 +19,7 @@ public class RequestBodyInterceptor implements HandlerInterceptor {
         Boolean ReponseByAuthService;
 
         if (request.getRequestURI().equals("/login/")
-                || request.getRequestURI().startsWith("/user/")
+                || request.getRequestURI().startsWith("/user")
         )
         {
             ReponseByAuthService= true;
