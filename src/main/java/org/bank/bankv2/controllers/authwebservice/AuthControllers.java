@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/login")
 @RequiredArgsConstructor
 public class AuthControllers {

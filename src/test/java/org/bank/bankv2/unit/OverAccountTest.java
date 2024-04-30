@@ -1,4 +1,4 @@
-package org.bank.bankv2;
+package org.bank.bankv2.unit;
 
 import org.bank.bankv2.controllers.OverAccountController;
 import org.bank.bankv2.models.OverAccount;
@@ -17,7 +17,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-public class Unit_OverAccountTest {
+public class OverAccountTest {
     @Mock
     private OverAccountService overAccountService;
 
