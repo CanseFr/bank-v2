@@ -1,4 +1,4 @@
-package org.bank.bankv2;
+package org.bank.bankv2.integration;
 
 import org.bank.bankv2.models.Client;
 import org.bank.bankv2.repositories.ClientRepository;
@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
-public class Integration_ClientTest {
+public class ClientTest {
     @Autowired
     private MockMvc mockMvc;
 
@@ -28,7 +28,7 @@ public class Integration_ClientTest {
 
     @Test
     public void testSaveClient() throws Exception {
-        String requestBody = "{\"username\":\"testuser\",\"adress\":\"testadress\"}";
+        String requestBody = "{\"email\":\"testuser\",\"adress\":\"testadress\"}";
         mockMvc.perform(MockMvcRequestBuilders.post("/client/")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestBody))

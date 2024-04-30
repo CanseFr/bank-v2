@@ -18,14 +18,17 @@ public class RequestBodyInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Boolean ReponseByAuthService;
 
-        if (request.getRequestURI().equals("/login/")) {
+        if (request.getRequestURI().equals("/login/")
+                || request.getRequestURI().startsWith("/user")
+        )
+        {
             ReponseByAuthService= true;
             if(ReponseByAuthService){
                 // Penser a throw des exceptions personnalisé
-                System.out.println("Acces Accepted : On Login");
+                System.out.println("URI Acces Accepted ");
                 return true;
             } else {
-                System.out.println("Acces Denied : On Login");
+                System.out.println("URI Acces Denied");
                 return false;
             }
         } else {
@@ -38,8 +41,6 @@ public class RequestBodyInterceptor implements HandlerInterceptor {
                 return false;
             }
         }
-
-
     }
 
     private boolean validateToken(String token) {

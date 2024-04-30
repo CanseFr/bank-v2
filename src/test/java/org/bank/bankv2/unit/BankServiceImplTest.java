@@ -1,4 +1,4 @@
-package org.bank.bankv2;
+package org.bank.bankv2.unit;
 
 import org.bank.bankv2.classes.Currencies;
 import org.bank.bankv2.enums.Currency;
@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
 import static org.mockito.Mockito.*;
 
-class Unit_BankServiceImplTest {
+class BankServiceImplTest {
 
     @Mock
     private BankRepository bankRepository;

@@ -1,9 +1,10 @@
 package org.bank.bankv2.web_service.services;
 
-import org.bank.bankv2.web_service.authentication.UserAuth;
+import org.bank.bankv2.web_service.models.authentication.UserAuth;
+import org.springframework.http.ResponseEntity;
 
 import java.io.IOException;
 
 public interface AuthenticationService {
-    boolean authenticate(UserAuth userAuth) throws IOException;
+    ResponseEntity authenticate(UserAuth userAuth) throws IOException;
 }

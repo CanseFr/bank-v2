@@ -4,7 +4,7 @@
     <img src="assets/mns.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Bank Micro Service Auth Section</h3>
+<h3 align="center">Bank Micro Service</h3>
 
   <p align="center">
     <a href="https://github.com/CanseFr">Request Feature</a>
@@ -49,8 +49,6 @@ The goal is to create a banking service consisting of some very simple banking p
 
 The banking service will then have to communicate with a micro authentication service.
 
-You can find this micro service application on this repository : (Link: [Github](https://github.com/ThomasStibling/micro-service-authentification-js))
-
 <!-- FEATURES -->
 
 ## Features
@@ -64,6 +62,10 @@ You can find this micro service application on this repository : (Link: [Github]
 - **Client**: Does not have a particular method but is necessary to create an account.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- Documentation -->
+### Technical drawing
 
 <!-- BUILT WITH -->
 ### Built With
@@ -88,7 +90,25 @@ You can find this micro service application on this repository : (Link: [Github]
    git clone https://github.com/CanseFr/bank-v2.git
    ```
 
-2. Ajust application.yaml with your database env
+   ```sh
+   git clone du micro service
+   ```
+
+2.Run BankV2Application or lunch tests
+
+Get response header with token, try to Post this url
+```Postman test login
+Post : http://localhost:8080/login/   
+Json Raw: 
+{
+ "email": "test@test.fr",
+ "password": "testtesttest"
+}
+```
+
+**To have a database as part of launching the tests, please run the main to generate the database using the yaml file !**
+
+4. Ajust application.yaml with your database env
 ```yaml
 spring:
 datasource:
@@ -108,7 +128,8 @@ ddl-auto: update
 springdoc:
 default-produces-media-type: application/json
 ```
-3.Run the main.
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
