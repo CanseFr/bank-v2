@@ -2,6 +2,10 @@
 
 ## Summary
 
+- Deploy
+
+  - [Lunch][lunch]
+
 - Api
 
     - [Api][api]
@@ -10,9 +14,7 @@
 
     - [Auth][auth]
 
-- Deploy 
 
-  - [Lunch][lunch]
 
 [//]: # "--- Images and links section ---"
 [api]: api/simple-request.md
