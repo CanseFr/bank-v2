@@ -63,6 +63,13 @@ The banking service will then have to communicate with a micro authentication se
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
+<!-- Documentation -->
+### Check documentation 
+- [Click here][doc]
+
+[doc]: documentation/summary.md
+
 <!-- BUILT WITH -->
 ### Built With
 
@@ -89,47 +96,6 @@ The banking service will then have to communicate with a micro authentication se
    ```sh
    git clone du micro service
    ```
-
-2.Run BankV2Application or lunch tests
-
-Get response header with token, try to Post this url
-```Postman test login
-Post : http://localhost:8080/login/   
-Json Raw: 
-{
- "email": "test@test.fr",
- "password": "testtesttest"
-}
-```
-
-**To have a database as part of launching the tests, please run the main to generate the database using the yaml file !**
-
-4. Ajust application.yaml with your database env
-```yaml
-spring:
-datasource:
-url: jdbc:mysql://localhost:3306/bank_v3
-driver-class-name: com.mysql.cj.jdbc.Driver
-username: ???
-password: ???
-jpa:
-hibernate:
-ddl-auto: update
-    database: mysql
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-    properties:
-      hibernate:
-        format_sql: true
-        defer-datasource-initialization: true
-springdoc:
-default-produces-media-type: application/json
-```
-
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -192,3 +158,5 @@ Ishak
 
 [Maven]: https://img.shields.io/badge/Maven-000000?style=for-the-badge&logo=apache&logoColor=fcba03
 [Maven-url]: https://maven.apache.org/
+
+[doc]: documentation/summary.md
